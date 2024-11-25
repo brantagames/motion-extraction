@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcku0r5wg2dg3"]
+
+[ext_resource type="PackedScene" uid="uid://bj618rmd4ckha" path="res://demo_2d/player_2d.tscn" id="1_fgi7b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0rv3p"]
+size = Vector2(1152, 64)
+
+[node name="Level2D" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -128
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(0, 96)
+
+[node name="Polygon2D" type="Polygon2D" parent="Floor"]
+polygon = PackedVector2Array(-576, -32, -576, 32, 576, 32, 576, -32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("RectangleShape2D_0rv3p")
+
+[node name="Player2D" parent="." instance=ExtResource("1_fgi7b")]
+
+[node name="Camera2D" type="Camera2D" parent="."]

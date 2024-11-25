@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://doj5770qmrap6"]
+
+[ext_resource type="PackedScene" uid="uid://dcku0r5wg2dg3" path="res://demo_2d/level_2d.tscn" id="1_45378"]
+[ext_resource type="Shader" path="res://addons/motion_extraction/motion_extraction.gdshader" id="2_jtxut"]
+[ext_resource type="Script" path="res://addons/motion_extraction/motion_extraction_rect.gd" id="3_h4wf6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oul2g"]
+shader = ExtResource("2_jtxut")
+
+[sub_resource type="ImageTexture" id="ImageTexture_y4rcx"]
+
+[node name="Demo2D" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="Level2D" parent="CanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("1_45378")]
+
+[node name="MotionExtractionRect" type="TextureRect" parent="CanvasLayer/SubViewportContainer" node_paths=PackedStringArray("viewport")]
+material = SubResource("ShaderMaterial_oul2g")
+layout_mode = 2
+texture = SubResource("ImageTexture_y4rcx")
+script = ExtResource("3_h4wf6")
+viewport = NodePath("../SubViewport")
+frame_delay = 60

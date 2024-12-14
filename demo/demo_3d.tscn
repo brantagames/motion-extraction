@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://dpfrou4bfqt20"]
 
-[ext_resource type="Texture2D" uid="uid://ddg5fgkyn8y1k" path="res://icon.svg" id="1_3olcb"]
-[ext_resource type="Shader" path="res://addons/motion_extraction/motion_extraction.gdshader" id="2_0gc68"]
-[ext_resource type="Script" path="res://addons/motion_extraction/motion_extraction_rect.gd" id="3_87qvd"]
+[ext_resource type="Texture2D" uid="uid://ddg5fgkyn8y1k" path="res://icon.svg" id="1_lgexd"]
+[ext_resource type="Shader" path="res://addons/motion_extraction/motion_extraction.gdshader" id="2_j53is"]
+[ext_resource type="Script" path="res://addons/motion_extraction/motion_extraction_rect.gd" id="3_3a5hv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0icsm"]
 ground_bottom_color = Color(0.6463, 0.6558, 0.6708, 1)
@@ -15,7 +15,7 @@ sky_material = SubResource("ProceduralSkyMaterial_0icsm")
 sky = SubResource("Sky_k43tp")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tgiwa"]
-albedo_texture = ExtResource("1_3olcb")
+albedo_texture = ExtResource("1_lgexd")
 uv1_offset = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 
@@ -110,7 +110,7 @@ _data = {
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mvxip"]
-shader = ExtResource("2_0gc68")
+shader = ExtResource("2_j53is")
 
 [sub_resource type="ImageTexture" id="ImageTexture_25asf"]
 
@@ -142,7 +142,9 @@ grow_vertical = 2
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
+handle_input_locally = false
 size = Vector2i(1152, 648)
+render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 1.5, 3)
@@ -155,5 +157,5 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("ImageTexture_25asf")
-script = ExtResource("3_87qvd")
+script = ExtResource("3_3a5hv")
 viewport = NodePath("../SubViewportContainer/SubViewport")

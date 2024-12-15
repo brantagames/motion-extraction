@@ -30,15 +30,20 @@ func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
 	
-	while _frame_buffer.size() > frame_delay:
+	while _frame_buffer.size() > frame_delay - 1:
 		_frame_buffer.pop_front()
 	
 	await RenderingServer.frame_pre_draw
-	_frame_buffer.append(viewport.get_texture().get_image())
-	if _frame_buffer.size() == frame_delay:
+	
+	if frame_delay == 1:
+		_image_texture.set_image(viewport.get_texture().get_image())
+		return
+	
+	if _frame_buffer.size() == frame_delay - 1:
 		_image_texture.set_image(_frame_buffer.pop_front())
 	else:
 		_image_texture.set_image(viewport.get_texture().get_image())
+	_frame_buffer.append(viewport.get_texture().get_image())
 
 
 func _get_configuration_warnings() -> PackedStringArray:

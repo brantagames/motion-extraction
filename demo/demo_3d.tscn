@@ -22,6 +22,45 @@ uv1_triplanar = true
 [sub_resource type="BoxMesh" id="BoxMesh_ovg77"]
 material = SubResource("StandardMaterial3D_tgiwa")
 
+[sub_resource type="Animation" id="Animation_o0ao5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_n3tbd"]
 resource_name = "dance"
 length = 16.0
@@ -64,55 +103,16 @@ tracks/2/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(1, 0, 0), Vector3(-1, 0, 0), Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_o0ao5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("MeshInstance3D:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_d0p6h"]
 _data = {
 "RESET": SubResource("Animation_o0ao5"),
 "dance": SubResource("Animation_n3tbd")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mvxip"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u38dh"]
 shader = ExtResource("2_j53is")
 
-[sub_resource type="ImageTexture" id="ImageTexture_25asf"]
+[sub_resource type="ImageTexture" id="ImageTexture_yfqvj"]
 
 [node name="Demo3D" type="Node"]
 
@@ -150,12 +150,12 @@ render_target_update_mode = 4
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 1.5, 3)
 
 [node name="MotionExtractionRect" type="TextureRect" parent="CanvasLayer" node_paths=PackedStringArray("viewport")]
-material = SubResource("ShaderMaterial_mvxip")
+material = SubResource("ShaderMaterial_u38dh")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("ImageTexture_25asf")
+texture = SubResource("ImageTexture_yfqvj")
 script = ExtResource("3_3a5hv")
 viewport = NodePath("../SubViewportContainer/SubViewport")

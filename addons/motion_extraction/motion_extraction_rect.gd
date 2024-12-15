@@ -33,14 +33,12 @@ func _process(delta: float) -> void:
 	while _frame_buffer.size() > frame_delay:
 		_frame_buffer.pop_front()
 	
-	await RenderingServer.frame_post_draw
-	
+	await RenderingServer.frame_pre_draw
+	_frame_buffer.append(viewport.get_texture().get_image())
 	if _frame_buffer.size() == frame_delay:
 		_image_texture.set_image(_frame_buffer.pop_front())
 	else:
 		_image_texture.set_image(viewport.get_texture().get_image())
-	
-	_frame_buffer.append(viewport.get_texture().get_image())
 
 
 func _get_configuration_warnings() -> PackedStringArray:

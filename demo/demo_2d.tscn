@@ -4,10 +4,10 @@
 [ext_resource type="Shader" path="res://addons/motion_extraction/motion_extraction.gdshader" id="2_jtxut"]
 [ext_resource type="Script" path="res://addons/motion_extraction/motion_extraction_rect.gd" id="3_h4wf6"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u0t5d"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qlnsj"]
 shader = ExtResource("2_jtxut")
 
-[sub_resource type="ImageTexture" id="ImageTexture_7pm20"]
+[sub_resource type="ImageTexture" id="ImageTexture_exme3"]
 
 [node name="Demo2D" type="Node"]
 
@@ -29,8 +29,8 @@ render_target_update_mode = 4
 [node name="Level2D" parent="CanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("1_45378")]
 
 [node name="MotionExtractionRect" type="TextureRect" parent="CanvasLayer/SubViewportContainer" node_paths=PackedStringArray("viewport")]
-material = SubResource("ShaderMaterial_u0t5d")
+material = SubResource("ShaderMaterial_qlnsj")
 layout_mode = 2
-texture = SubResource("ImageTexture_7pm20")
+texture = SubResource("ImageTexture_exme3")
 script = ExtResource("3_h4wf6")
 viewport = NodePath("../SubViewport")
